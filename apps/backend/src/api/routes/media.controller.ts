@@ -35,6 +35,14 @@ export class MediaController {
     private _subscriptionService: SubscriptionService
   ) {}
 
+  @Post('/:id/ai-caption')
+  generateAiCaption(
+    @GetOrgFromRequest() org: Organization,
+    @Param('id') id: string
+  ) {
+    return this._mediaService.generateAiCaption(org.id, id);
+  }
+
   @Delete('/:id')
   deleteMedia(@GetOrgFromRequest() org: Organization, @Param('id') id: string) {
     return this._mediaService.deleteMedia(org.id, id);

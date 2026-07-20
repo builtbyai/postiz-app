@@ -16,6 +16,7 @@ import { makeId } from '@gitroom/nestjs-libraries/services/make.is';
 import EmojiPicker from 'emoji-picker-react';
 import { Theme } from 'emoji-picker-react';
 import { BoldText } from '@gitroom/frontend/components/new-launch/bold.text';
+import { AiCaptionButton } from '@gitroom/frontend/components/new-launch/ai.caption.button';
 import { UText } from '@gitroom/frontend/components/new-launch/u.text';
 import { SignatureBox } from '@gitroom/frontend/components/signature';
 import { useT } from '@gitroom/react/translation/get.transation.service.client';
@@ -777,6 +778,17 @@ export const Editor: FC<{
                   }
                   toolBar={
                     <div className="flex gap-[5px]">
+                      {pictures && pictures.length > 0 && (
+                        <AiCaptionButton
+                          pictures={pictures}
+                          onCaption={(html) => {
+                            editorRef?.current?.editor?.commands?.setContent(
+                              html,
+                              { emitUpdate: true }
+                            );
+                          }}
+                        />
+                      )}
                       <SignatureBox editor={editorRef?.current?.editor} />
                       {editorType !== 'none' && (
                         <>

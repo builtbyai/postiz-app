@@ -1,4 +1,9 @@
 <p align="center">
+  <strong>🛠️ Maintained fork by <a href="https://wardtechsystems.com">Ward Tech Systems</a></strong><br />
+  <sub>Based on the open-source <a href="https://github.com/gitroomhq/postiz-app">Postiz</a> project. See <a href="#-ai-caption-ward-tech-systems-addition">AI Caption</a> below for what this fork adds.</sub>
+</p>
+
+<p align="center">
   <a href="https://postiz.com/" target="_blank">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/765e9d72-3ee7-4a56-9d59-a2c9befe2311">
@@ -106,6 +111,27 @@
 - Prisma (Default to PostgreSQL)
 - Temporal
 - Resend (email notifications)
+
+## ✨ AI Caption (Ward Tech Systems addition)
+
+This fork adds an **AI Caption** button to the post editor. Upload a photo, click it, and it:
+
+1. Sends the image to a vision model (**OpenAI** if `OPENAI_API_KEY` is set, otherwise a local **Ollama** vision model) to get a factual description of the photo.
+2. Feeds that description to a text model (**DeepSeek** if `DEEPSEEK_API_KEY` is set, otherwise a local **Ollama** text model) using a configurable brand template to produce a ready-to-post caption with headline, hook, benefit bullets, closer, and hashtags.
+
+Configuration (all optional — falls back to local Ollama with sensible defaults):
+
+| Env var | Purpose | Default |
+|---|---|---|
+| `OLLAMA_URL` | Local Ollama endpoint | `http://localhost:11434` |
+| `OLLAMA_VISION_MODEL` | Vision model for image description | `qwen2.5vl:32b` |
+| `OLLAMA_TEXT_MODEL` | Text model for caption generation | same as vision model |
+| `OPENAI_API_KEY` / `OPENAI_VISION_MODEL` | Use OpenAI instead of local Ollama for vision | — |
+| `DEEPSEEK_API_KEY` | Use DeepSeek instead of local Ollama for caption text | — |
+| `CAPTION_BRAND_NAME` | Brand name inserted into the caption | `Ward Tech Systems` |
+| `CAPTION_BRAND_TAGLINE` | Tagline appended to the caption | `AI-Powered Social Captions` |
+
+Backend: `POST /media/:id/ai-caption` (`libraries/nestjs-libraries/src/database/prisma/media/media.service.ts`). Frontend: `apps/frontend/src/components/new-launch/ai.caption.button.tsx`.
 
 ## Quick Start
 
