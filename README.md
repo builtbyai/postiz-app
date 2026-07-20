@@ -1,6 +1,26 @@
+<div align="center" style="background: linear-gradient(135deg, #1a1a1c 0%, #000000 100%); padding: 50px 40px; border-radius: 20px; color: white; margin: 0 0 30px 0; box-shadow: 0 20px 60px rgba(160, 117, 44, 0.35); border: 1px solid #A0752C;">
+  <div style="font-size: 0.95em; letter-spacing: 3px; text-transform: uppercase; color: #DEB568; font-weight: 700; margin-bottom: 14px;">Ward Tech Systems</div>
+  <h1 style="margin: 0 0 16px 0; font-size: 2.6em; font-weight: 800; background: linear-gradient(90deg, #DEB568 0%, #A0752C 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">🛠️ Postiz + AI Caption</h1>
+  <p style="font-size: 1.15em; margin: 0 0 28px 0; color: #F4F1ED; opacity: 0.9;">A Ward Tech Systems fork of the open-source <a href="https://github.com/gitroomhq/postiz-app" style="color: #DEB568;">Postiz</a> scheduler — adds an AI-generated caption workflow on top of upstream's social scheduling core.</p>
+
+  <div style="display: inline-flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+    <div style="background: rgba(222,181,104,0.12); padding: 14px 26px; border-radius: 12px; border: 1px solid #A0752C;">
+      <div style="font-size: 1.6em; font-weight: 700; color: #DEB568;">28+</div>
+      <div style="font-size: 0.85em; color: #F4F1ED; opacity: 0.85;">Channels Supported</div>
+    </div>
+    <div style="background: rgba(222,181,104,0.12); padding: 14px 26px; border-radius: 12px; border: 1px solid #A0752C;">
+      <div style="font-size: 1.6em; font-weight: 700; color: #DEB568;">✨ AI</div>
+      <div style="font-size: 0.85em; color: #F4F1ED; opacity: 0.85;">Vision + Text Captioning</div>
+    </div>
+    <div style="background: rgba(222,181,104,0.12); padding: 14px 26px; border-radius: 12px; border: 1px solid #A0752C;">
+      <div style="font-size: 1.6em; font-weight: 700; color: #DEB568;">Fork</div>
+      <div style="font-size: 0.85em; color: #F4F1ED; opacity: 0.85;">of gitroomhq/postiz-app</div>
+    </div>
+  </div>
+</div>
+
 <p align="center">
-  <strong>🛠️ Maintained fork by <a href="https://wardtechsystems.com">Ward Tech Systems</a></strong><br />
-  <sub>Based on the open-source <a href="https://github.com/gitroomhq/postiz-app">Postiz</a> project. See <a href="#-ai-caption-ward-tech-systems-addition">AI Caption</a> below for what this fork adds.</sub>
+  <a href="https://wardtechsystems.com"><strong>wardtechsystems.com</strong></a>
 </p>
 
 <p align="center">
@@ -112,12 +132,29 @@
 - Temporal
 - Resend (email notifications)
 
-## ✨ AI Caption (Ward Tech Systems addition)
+<a name="ai-caption"></a>
+## ✨ AI Caption — Ward Tech Systems Addition
 
-This fork adds an **AI Caption** button to the post editor. Upload a photo, click it, and it:
+<div style="background: linear-gradient(135deg, rgba(160,117,44,0.08) 0%, rgba(222,181,104,0.08) 100%); padding: 25px; border-radius: 14px; border-left: 4px solid #A0752C; margin: 20px 0;">
+  <strong style="color: #A0752C;">🛠️ What Ward Tech Systems added:</strong> a one-click <strong>AI Caption</strong> button in the post editor that turns any uploaded photo into a ready-to-post caption — no copywriting required.
+</div>
 
-1. Sends the image to a vision model (**OpenAI** if `OPENAI_API_KEY` is set, otherwise a local **Ollama** vision model) to get a factual description of the photo.
-2. Feeds that description to a text model (**DeepSeek** if `DEEPSEEK_API_KEY` is set, otherwise a local **Ollama** text model) using a configurable brand template to produce a ready-to-post caption with headline, hook, benefit bullets, closer, and hashtags.
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+  <tr>
+    <td style="width: 33%; vertical-align: top; padding: 16px; background: #fafafa; border-radius: 10px 0 0 10px; border: 1px solid #eee;">
+      <div style="font-weight: 700; color: #A0752C;">1. See</div>
+      <div style="color: #555; font-size: 0.92em; margin-top: 6px;">A vision model (OpenAI, or local Ollama) looks at the uploaded photo and writes a factual description.</div>
+    </td>
+    <td style="width: 33%; vertical-align: top; padding: 16px; background: #fafafa; border: 1px solid #eee; border-left: none; border-right: none;">
+      <div style="font-weight: 700; color: #A0752C;">2. Write</div>
+      <div style="color: #555; font-size: 0.92em; margin-top: 6px;">A text model (DeepSeek, or local Ollama) turns that description into headline, hook, bullets, closer, hashtags.</div>
+    </td>
+    <td style="width: 33%; vertical-align: top; padding: 16px; background: #fafafa; border-radius: 0 10px 10px 0; border: 1px solid #eee;">
+      <div style="font-weight: 700; color: #A0752C;">3. Post</div>
+      <div style="color: #555; font-size: 0.92em; margin-top: 6px;">The caption drops straight into the launch editor, branded via <code>CAPTION_BRAND_NAME</code>.</div>
+    </td>
+  </tr>
+</table>
 
 Configuration (all optional — falls back to local Ollama with sensible defaults):
 
