@@ -56,6 +56,9 @@ Thumbs.db
 
 # ignore Secrets folder
 .secrets/
+
+# local Claude Code session scratch (not part of the project)
+.claude/codex-handoff/
 libraries/plugins/src/plugins.ts
 i18n.cache
 
